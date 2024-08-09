@@ -11,28 +11,7 @@ namespace ECommerce.Controllers
     public class ProductController(IProductService productService) : ControllerBase
     {
         private readonly IProductService _productService = productService;
-
-        [HttpGet("GetAllProducts")]
-        public IActionResult GetAll()
-        {
-            //var products = context.Products.Include(p => p.ProductColors)
-            //                                .ThenInclude(pc => pc.Color)
-            //                                    .ToList();
-
-            //var productDtos = products.Select(p => new ProductDto
-            //{
-            //    ProductId = p.Id,
-            //    Name = p.Name,
-            //    Colors = p.ProductColors.Select(pc => new ColorDto
-            //    {
-            //        ColorId = pc.Color.Id,
-            //        Name = pc.Color.Name
-            //    }).ToList()
-            //}).ToList();
-
-            var result = _productService.GetAll();
-            return Ok(result);
-        }
+        
 
         [HttpGet("GetProductSubCategories")]
         public IActionResult GetProductSubCategories(int id)
@@ -49,7 +28,7 @@ namespace ECommerce.Controllers
 
 
         [HttpPost("AddProduct")]
-        public IActionResult CreateProduct([FromBody]ProductDto productDto)
+        public IActionResult CreateProduct([FromBody] ProductDto productDto)
         {
             Product product = new Product()
             {

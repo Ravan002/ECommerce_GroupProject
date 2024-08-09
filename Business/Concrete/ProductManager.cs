@@ -1,11 +1,6 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entites.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
@@ -19,27 +14,30 @@ namespace Business.Concrete
 
         public void Delete(Product product)
         {
-            throw new NotImplementedException();
+            _productDal.Delete(product);
         }
 
-        public Product Get(Product product)
+        public Product GetByName(string productName)
         {
-            throw new NotImplementedException();
+            return _productDal.Get(p => p.Name == productName);
         }
 
         public List<Product> GetAll()
         {
-            return _productDal.GetAll();
+            var products = _productDal.GetAll();
+            return products;
         }
+
 
         public Product GetById(int id)
         {
-            return _productDal.Get(p=>p.Id == id);
+            return _productDal.Get(p => p.Id == id);
         }
 
         public void Update(Product product)
         {
             _productDal.Update(product);
         }
+
     }
 }

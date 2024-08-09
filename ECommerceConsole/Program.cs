@@ -1,6 +1,7 @@
 ﻿using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entites.Concrete;
+using Microsoft.EntityFrameworkCore;
 
 
 // BaseRepositorydeki methodlari deyisirik entitystate yerine birdefelik context-in metholarini istifade edirik
@@ -8,100 +9,27 @@ using Entites.Concrete;
 // ManyToMany ucun yaradilmis ucun yaradilmis entityler ucunde Dal ve Service lazimdirmi?
 // Product icinden add eleye bilirik lakin silmek ucun productColor entitysini cagirib remove isletmeliyik. ??Ferqli yolu varmi bilmirem??
 
-var productColor = new List<ProductColor>()
-{
-    new ProductColor()
-    {
-         Color= new Color()
-         {
-             Name="Red",
-         },
-         Product= new Product()
-         {
-             Name="Iphone",
-             Description="latest version",
-             Brand=new Brand()
-             {
-                 Name="Apple"
-             },
-             ProductSubCategories=new List<ProductSubCategory>()
-             {
-                 new ProductSubCategory()
-                 {
-                     SubCategory= new SubCategory()
-                     {
-                         Name="Telefonlar",
-                         Category= new Category()
-                         {
-                             Name="Texnoloji avadandliqlar"
-                         }
-                     }
-                 },
-                 new ProductSubCategory()
-                 {
-                     SubCategory= new SubCategory()
-                     {
-                         Name="Agilli qurgular",
-                         Category= new Category()
-                         {
-                             Name="Smart esyalar"
-                         }
-                     }
-                 },
-             }
-         }
-    },
-    new ProductColor()
-    {
-         Color= new Color()
-         {
-             Name="Green",
-         },
-         Product= new Product()
-         {
-             Name="Tozsoran s24",
-             Description="yeni dovrun tozsorani",
-             Brand=new Brand()
-             {
-                 Name="becho"
-             },
-             ProductSubCategories=new List<ProductSubCategory>()
-             {
-                 new ProductSubCategory()
-                 {
-                     SubCategory= new SubCategory()
-                     {
-                         Name="Tozsoran",
-                         Category= new Category()
-                         {
-                             Name="Meiset avadanligi"
-                         }
-                     }
-                 }
-             }
-         }
-    }
-};
 
-ProductManager productManager = new ProductManager(new EfProductDal());
 
-Product product = new Product()
-{
-    Name = "Smasung galaxy",
-    Description="adasdasd",
-    Brand= new Brand()
-    {
-        Name="Honor"
-    }
-};
-productManager.Add(product);
+
+//ProductManager productManager = new ProductManager(new EfProductDal());
+
+//Product product = new Product()
+//{
+//    Name = "Smasung galaxy",
+//    Description="adasdasd",
+//    Brand= new Brand()
+//    {
+//        Name="Honor"
+//    }
+//};
+//productManager.Add(product);
 //var product = productManager.GetById(1);
 //product.Brand = new Brand()
 //{
 //    Name = "samsung"
 //};
 //productManager.Update(product);
-Console.WriteLine(product.Name);
 
 //ECommerceContext context = new ECommerceContext();
 

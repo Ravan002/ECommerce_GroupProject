@@ -1,10 +1,10 @@
-﻿namespace Entites.Concrete
+﻿using Entites.Abstract;
+
+namespace Entites.Concrete
 {
-    public class ProductSubCategory
+    public class ProductSubCategory : BaseEntity
     {
         public int ProductId { get; set; }
         public int SubCategoryId { get; set; }
-        public Product Product { get; set; }
-        public SubCategory SubCategory { get; set; }
     }
 }

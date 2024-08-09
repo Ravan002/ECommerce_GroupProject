@@ -12,7 +12,8 @@ namespace DataAccess.Concrete.EntityFramework
         public void Add(TEntity entity)
         {
             var context = new TContext();
-            context.Add(entity);
+            var addedEntity=context.Entry(entity);
+            addedEntity.State=EntityState.Added;
             var changes = context.SaveChanges();
             Console.WriteLine("Number of changes in db: " + changes);
         }
@@ -20,7 +21,8 @@ namespace DataAccess.Concrete.EntityFramework
         public void Update(TEntity entity)
         {
             var context = new TContext();
-            context.Update(entity);
+            var updatedEntity = context.Entry(entity);
+            updatedEntity.State = EntityState.Modified;
             var changes = context.SaveChanges();
             Console.WriteLine("Number of changes in db: " + changes);
         }
@@ -42,7 +44,8 @@ namespace DataAccess.Concrete.EntityFramework
         public void Delete(TEntity entity)
         {
             var context = new TContext();
-            context.Remove(entity);
+            var updatedEntity = context.Entry(entity);
+            updatedEntity.State = EntityState.Modified;
             var changes = context.SaveChanges();
             Console.WriteLine("Number of changes in db: " + changes);
         }
